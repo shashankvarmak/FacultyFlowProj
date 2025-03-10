@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #F2F0EF;
+    background-color: #E3F6FF; /* Light blue tint background */
     margin: 0;
     padding: 0;
 }
@@ -9,16 +9,17 @@ body {
 .fixed-header {
     top: 0;
     left: 0;
-    height: 70px;
-    background-color: #245F73;
+    background-color: #2D3E50; /* Deep Blue-Gray */
     color: white;
-    padding: 15px 30px;
+    height: 70px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
     font-weight: bold;
     z-index: 1000;
+    border-bottom: 4px solid #C7EDFF; /* Soft blue accent line */
 }
 
 /* Navigation Links */
@@ -35,50 +36,37 @@ body {
     text-decoration: none;
     font-size: 18px;
     padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#heading{
+ color:white;
+ font-size:32px;
 }
 
 .header-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Logout Button */
-.logout-btn {
-    font-weight: bold;
-}
-
-/* Dashboard & Logout Alignment */
-.header-right {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+    color: #E3F6FF; /* Light blue hover */
 }
 
 /* Page Container */
 .container {
     max-width: 90%;
-    margin: 80px auto 20px;
+    margin: 50px auto 20px;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#heading{
-color: white;
- /* Adjust size
-    font-weight: bold;
-    padding: 10px 20px;
-    margin-left: 20px; */
+    /* border: 2px solid #C7EDFF;  Soft Blue border */
 }
 
 /* Department Code Styling */
 #deptcode {
-    color: #245F73;
+    color: #2D3E50;
     font-size: 18px;
 }
 
 h1, h2 {
-    color: #854a2d;
+    color: #2D3E50;
 }
 
 /* Faculty List - Grid Layout */
@@ -89,46 +77,65 @@ h1, h2 {
     justify-content: center;
 }
 
-/* Faculty Card - Equal Height */
+/* Faculty Card - Modern Styling */
 .faculty-card {
-    background: #fff;
+    background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #C7EDFF; /* Soft Blue border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     min-height: 150px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+.faculty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons Styling */
 .contact-button {
     display: inline-block;
     margin-top: auto;
     padding: 8px 12px;
-    background-color: #854a2d;
+    background-color: #203038; /* Dark Teal */
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-size: 14px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .contact-button:hover {
-    background-color: #6c3b22;
+    background-color: #2D3E50; /* Deep Blue-Gray */
+    transform: scale(1.05);
+}
+
+/* Back Button */
+.back-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .back-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background-color: #245F73;
+    background-color: #203038; /* Dark Teal */
     color: white;
-    text-decoration: none;
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .back-button:hover {
-    background-color: #1D4D60;
+    background-color: #2D3E50; /* Deep Blue-Gray */
+    transform: scale(1.05);
 }
 
 html, body {

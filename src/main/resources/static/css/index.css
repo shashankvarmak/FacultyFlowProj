@@ -198,7 +198,7 @@ html {
      height: 91vh;
      padding: 50px;
      box-sizing:border-box;
-     background: #c7edff; /* Soft Blue */
+     background: #E3F6FF; /* Soft Blue */
      flex-direction: row-reverse; /* This moves the image to the left and text to the right */
  }
 

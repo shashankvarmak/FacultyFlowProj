@@ -1,7 +1,7 @@
 /* General Page Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #F2F0EF;
+    background-color: #E3F6FF;
     margin: 0;
     padding: 0; /* Removed unnecessary padding */
 }
@@ -87,7 +87,7 @@ h1 {
     padding: 20px;
     width: 300px;
     transition: transform 0.2s;
-        border-left: 5px solid #245F73;
+    border-left: 5px solid #203038;
 
 }
 
@@ -100,7 +100,7 @@ h1 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
-        color: #245F73;
+        color: #2D3E50;
 
 }
 
@@ -121,7 +121,7 @@ h1 {
 .details-button {
     text-decoration: none;
     padding: 8px 16px;
-    border: 1px solid #854a2d;
+    border: 1px solid #17A2B8;
     color: black;
     border-radius: 6px;
     font-size: 14px;
@@ -129,7 +129,7 @@ h1 {
 }
 
 .details-button:hover {
-    background-color: #854a2d;
+    background-color: #2D3E50;
     color: white;
 }
 
