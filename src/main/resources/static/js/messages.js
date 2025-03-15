@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Add class based on whether the message was sent or received
         messageElement.classList.add("message", message.senderEmail === senderEmail ? "sent" : "received");
-        messageElement.innerHTML = `<strong>${message.senderEmail}:</strong> ${message.content}`;
+        messageElement.innerHTML = `${message.content}`;
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom to show latest message
     }

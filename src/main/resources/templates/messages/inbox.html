@@ -4,6 +4,7 @@
     <title>Inbox</title>
     <link rel="stylesheet" th:href="@{/css/messages.css}">
     <link rel="icon" type="image/x-icon" href="/favicon2.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
     <script src="/js/messages.js" defer></script>
@@ -18,9 +19,10 @@
 <div class="chat-container">
     <!-- Left Sidebar: Conversation List & New Message Option -->
     <div class="user-list">
-        <h3>Your Conversations</h3>
-        <!-- New Message Button -->
-        <button class="new-message-btn" onclick="toggleFacultyList()">New Message</button>
+        <div class="conversations-header">
+            <span><i class="fas fa-comments"></i>Chats</span>
+            <button class="new-message-btn" onclick="toggleFacultyList()">+</button>
+        </div>
 
         <!-- Faculty List (Initially Hidden) -->
         <div id="facultyListContainer" class="faculty-list-container" style="display: none;">
@@ -52,8 +54,10 @@
         <div class="message-input">
             <input type="hidden" id="senderEmail" th:value="${session.loggedInUserEmail}">
             <input type="hidden" id="receiverEmail">
-            <textarea id="messageInput" placeholder="Type a message..."></textarea>
-            <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
+            <textarea id="messageInput" placeholder="Message.."></textarea>
+            <button id="sendMessageBtn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i> <!-- FontAwesome Send Icon -->
+            </button>
         </div>
     </div>
 </div>
@@ -95,25 +99,29 @@
     }
 
     // Load an existing conversation from the conversation list
-    function loadChat(element) {
-        receiverEmail = element.getAttribute("data-email");
-        document.getElementById("chatTitle").innerText = "Chat with " + receiverEmail;
-        document.getElementById("receiverEmail").value = receiverEmail;
-        fetch(`/messages/chat/${receiverEmail}`)
-            .then(response => response.json())
-            .then(messages => {
-                const messageContainer = document.getElementById("messageContainer");
-                messageContainer.innerHTML = "";
-                messages.forEach(msg => {
-                    let messageDiv = document.createElement("div");
-                    const senderEmail = document.getElementById("senderEmail").value;
-                    messageDiv.classList.add(msg.senderEmail === senderEmail ? "sent" : "received");
-                    messageDiv.innerHTML = `<strong>${msg.senderEmail}:</strong> ${msg.content}`;
-                    messageContainer.appendChild(messageDiv);
-                });
-                messageContainer.scrollTop = messageContainer.scrollHeight;
+   function loadChat(element) {
+    receiverEmail = element.getAttribute("data-email");
+    document.getElementById("chatTitle").innerText = "Chat with " + receiverEmail;
+    document.getElementById("receiverEmail").value = receiverEmail;
+
+    fetch(`/messages/chat/${receiverEmail}`)
+        .then(response => response.json())
+        .then(messages => {
+            const messageContainer = document.getElementById("messageContainer");
+            messageContainer.innerHTML = "";
+            messages.forEach(msg => {
+                let messageDiv = document.createElement("div");
+                const senderEmail = document.getElementById("senderEmail").value;
+
+                // ✅ Ensure proper class application
+                messageDiv.classList.add("message", msg.senderEmail === senderEmail ? "sent" : "received");
+                messageDiv.innerHTML = `${msg.content}`;
+                messageContainer.appendChild(messageDiv);
             });
-    }
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        });
+}
+
 
     // Send a message via WebSocket
     function sendMessage() {
@@ -132,17 +140,20 @@
     }
 
     // Update chat UI with a new message
-    function updateChat(message) {
-        const senderEmail = document.getElementById("senderEmail").value;
-        if (message.receiverEmail === receiverEmail || message.senderEmail === receiverEmail) {
-            const messageContainer = document.getElementById("messageContainer");
-            let messageDiv = document.createElement("div");
-            messageDiv.classList.add(message.senderEmail === senderEmail ? "sent" : "received");
-            messageDiv.innerHTML = `<strong>${message.senderEmail}:</strong> ${message.content}`;
-            messageContainer.appendChild(messageDiv);
-            messageContainer.scrollTop = messageContainer.scrollHeight;
-        }
+   function updateChat(message) {
+    const senderEmail = document.getElementById("senderEmail").value;
+    if (message.receiverEmail === receiverEmail || message.senderEmail === receiverEmail) {
+        const messageContainer = document.getElementById("messageContainer");
+        let messageDiv = document.createElement("div");
+
+        // ✅ Apply both "message" and either "sent" or "received"
+        messageDiv.classList.add("message", message.senderEmail === senderEmail ? "sent" : "received");
+        messageDiv.innerHTML = ` ${message.content}`;
+        messageContainer.appendChild(messageDiv);
+        messageContainer.scrollTop = messageContainer.scrollHeight;
     }
+}
+
 
     // Update the conversation list (left sidebar) with a new chat user if not already present
     function updateConversationList(message) {
