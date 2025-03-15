@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Faculty Availability</title>
+    <link rel="stylesheet" type="text/css" href="/css/check-availability.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<header>
+    <h1>Faculty Availability</h1>
+    <a href="/faculty/dashboard" class="nav-btn">Back to Dashboard</a>
+    <a href="/" class="nav-btn">Logout</a>
+</header>
+<h2>Check Faculty Availability</h2>
+
+<label for="faculty">Select Faculty:</label>
+<select id="faculty">
+    <option th:each="faculty : ${faculties}"
+            th:value="${faculty.id}"
+            th:text="${faculty.name}">
+    </option>
+</select>
+
+<label for="day">Select Day:</label>
+<select id="day">
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+</select>
+
+<label for="period">Select Period:</label>
+<select id="period">
+    <option value="period1">Period 1</option>
+    <option value="period2">Period 2</option>
+    <option value="period3">Period 3</option>
+    <option value="period4">Period 4</option>
+    <option value="period5">Period 5 (Lunch)</option>
+    <option value="period6">Period 6</option>
+    <option value="period7">Period 7</option>
+</select>
+
+<button onclick="checkAvailability()">Check Availability</button>
+
+<p id="result"></p>
+
+<script>
+    function checkAvailability() {
+        let facultyId = $("#faculty").val();
+        let day = $("#day").val();
+        let period = $("#period").val();
+
+        $.ajax({
+            url: "/faculty/check-availability",
+            type: "GET",
+            data: { facultyId, day, period },
+            success: function(response) {
+                if (response.available) {
+                    $("#result").text("Faculty is Available ✅").css("color", "green");
+                } else {
+                    $("#result").text("Faculty is NOT Available ❌").css("color", "red");
+                }
+            },
+            error: function() {
+                $("#result").text("Error checking availability").css("color", "red");
+            }
+        });
+    }
+</script>
+</body>
+</html>
