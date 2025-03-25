@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color:#F2F0EF;
+    background-color:#E3F6FF;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -27,10 +27,12 @@ header {
     text-decoration: none;
     margin: 0 15px;
     font-size: 18px;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
     text-decoration: underline;
+       color: #17A2B8;
 }
 
 .nav-links {

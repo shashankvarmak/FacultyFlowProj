@@ -11,8 +11,8 @@
 </head>
 <body>
 <header>
+    <a th:href="${session.role == 'STUDENT' ? '/student/dashboard' : '/faculty/dashboard'}" class="nav-btn"> Back</a>
     <h1>Inbox</h1>
-    <a th:href="${session.role == 'STUDENT' ? '/student/dashboard' : '/faculty/dashboard'}" class="nav-btn">Back to Dashboard</a>
     <a href="/" class="nav-btn">Logout</a>
 </header>
 

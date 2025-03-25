@@ -1,48 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+/* Apply Poppins to Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600; /* Makes headings bold */
+}
+
+/* Apply Roboto to Body Text */
+body, p, a, button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; /* Regular weight for readability */
+}
+
+/* Extra Styling for a Professional Look */
+h1 {
+    font-size: 48px;
+    color: #2D3E50; /* Deep Blue-Gray */
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #203038; /* Dark Teal */
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #F2F0EF; /* Yacht Club background color */
+    /* font-family: Arial, sans-serif; */
+    background-color: #E3F6FF; /* Yacht Club background color */
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
+/* Header */
 header {
-    background-color: #245F73; /* Deep Teal-Blue */
+    background: #2D3E50; /* Deep Blue-Gray */
+    padding:0;
+    margin:0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
     color: white;
-    padding: 15px;
-    height: 70px;
-    font-size: 22px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Aligns items correctly */
+    align-items: center; /* Vertically centers items */
+    padding: 10px 20px;
+    background-color: #2D3E50;
+    width: 99%;
+    height:50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Adds space between links */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    padding-right:20px;
+    transition: color 0.3s ease;
+}
+
+.navbar-container {
+    max-width: 1200px; /* Keeps content centered */
+    margin: 0 auto; /* Centers the navbar content */
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
-.nav-btn {
+
+nav ul {
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav{
+    margin-left: auto;
+}
+
+nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin-right: 15px;
+    font-size: 18px;
+    padding: 8px 12px;
+    display: inline-block;
 }
 
-.nav-btn:hover {
+nav ul li a:hover {
     text-decoration: underline;
+   color: #17A2B8;
 }
 
 .dashboard-container {
     max-width: 90%;
-    margin: 30px auto;
+    margin: 100px auto 30px;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.profile-section, .schedule-section {
+.profile-section{
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        font-size: 20px;
+        align-items: center;
+        color: #2D3E50;
+        border: 1px solid ;
+        border-radius: 50px;
+        background-color: #F5F5F5;
+}
+
+.schedule-section {
     margin-bottom: 20px;
 }
 
 h2 {
-    color: #245F73; /* Deep Teal-Blue */
+    color: #2D3E50; /* Deep Teal-Blue */
 }
 
 /* Styling for the timetable */
@@ -59,12 +163,12 @@ th, td {
 }
 
 th {
-    background-color: #245F73; /* Deep Teal-Blue */
+    background-color: #2D3E50; /* Deep Teal-Blue */
     color: white;
 }
 
 td {
-    background-color: #F2F0EF; /* Off-White */
+    background-color: #E3F6FF; /* Off-White */
 }
 
 /* Alternating row colors for better readability */

@@ -5,22 +5,40 @@
     <title>Faculty Dashboard</title>
     <link rel="icon" type="image/x-icon" href="/favicon2.ico" />
     <link rel="stylesheet" th:href="@{/css/faculty-dashboard.css}" />
+
 </head>
 <body>
-<header>
-    <h1>Faculty Dashboard</h1>
-    <a href="/faculty/dashboard" class="nav-btn">Home</a>
-    <a href="/messages" class="nav-btn">Messages</a> <!-- NEW BUTTON -->
-    <a href="/faculty/availability" class="nav-btn">Fac</a>
-    <a href="/faculty/leave/request" class="nav-btn">Leave</a> <!-- New Leave Request Button -->
+<!--<header>-->
+<!--    <h1>Faculty Dashboard</h1>-->
+<!--    <a href="/faculty/dashboard" class="nav-btn">Home</a>-->
+<!--    <a href="/messages" class="nav-btn">Messages</a> &lt;!&ndash; NEW BUTTON &ndash;&gt;-->
+<!--    <a href="/faculty/availability" class="nav-btn">Fac</a>-->
+<!--    <a href="/faculty/leave/request" class="nav-btn">Leave</a> &lt;!&ndash; New Leave Request Button &ndash;&gt;-->
 
-    <a href="/logout" class="nav-btn">Logout</a>
+<!--    <a href="/logout" class="nav-btn">Logout</a>-->
+<!--</header>-->
+
+<header>
+    <div class="navbar">
+        <div class="logo-container">
+            <h1 class="logo-text">Faculty Dashboard</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/faculty/dashboard">Home</a></li>
+                <li><a href="/messages" >Messages</a></li>
+                <li><a href="/faculty/availability">Availability</a></li>
+                <li><a href="/faculty/leave/request">Leave</a></li>
+                <li><a href="/">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <div class="dashboard-container">
     <!-- Faculty Profile Section -->
     <div class="profile-section">
-        <h2>Faculty Information</h2>
+<!--        <h2>Faculty Information</h2>-->
         <p><strong>Name:</strong> <span th:text="${faculty.name}"></span></p>
         <p><strong>Email:</strong> <span th:text="${faculty.email}"></span></p>
         <p><strong>Department:</strong> <span th:text="${faculty.department}"></span></p>

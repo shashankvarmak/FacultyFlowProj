@@ -34,7 +34,7 @@ header {
 /* Chat Container */
 .chat-container {
     display: flex;
-    height: 85vh;
+    height: 89vh;
     border-radius: 5px;
     overflow: hidden;
     border: 1px solid #C7EDFF; /* Soft Blue */
@@ -191,9 +191,10 @@ header {
 }
 
 .new-message-btn:hover {
-    background: linear-gradient(135deg, #3A506B, #1E2A38);
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(45, 62, 80, 0.6);
+    background: #B0DAF1;
+     filter: brightness(1.1); /* Slightly lighten the color on hover */
+    transition: all 0.2s ease-in-out;
+    box-shadow:none;
 }
 
 .message-input {
